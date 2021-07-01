@@ -9,13 +9,14 @@ import com.andariadar.viewpager2.databinding.ItemViewPagerBinding
 import com.andariadar.viewpager2.model.Page
 
 class ViewPagerAdapter: RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolder>() {
+
     inner class ViewPagerViewHolder(private val binding: ItemViewPagerBinding):
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(contact: Page) {
+            fun bind(page: Page) {
                 binding.apply {
-                    numeral.text = contact.num
-                    text.text = contact.text
-                    layout.setBackgroundResource(contact.color)
+                    pageNum.text = page.num
+                    text.text = page.text
+                    layout.setBackgroundResource(page.color)
                 }
             }
     }
@@ -42,9 +43,11 @@ class ViewPagerAdapter: RecyclerView.Adapter<ViewPagerAdapter.ViewPagerViewHolde
         }
     }
 
-    val differ = AsyncListDiffer(this, differCallback)
+    private val differ = AsyncListDiffer(this, differCallback)
 
-    fun submitList(data: MutableList<Page>) {
-        differ.submitList(data)
+    fun submitList(list: MutableList<Page>) {
+        differ.submitList(list)
     }
 }
+
+

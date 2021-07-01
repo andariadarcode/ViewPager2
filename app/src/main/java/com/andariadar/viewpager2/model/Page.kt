@@ -6,3 +6,4 @@ data class Page(
     var text: String,
     val color: Int
 )
+

@@ -8,10 +8,9 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/numeral"
+        android:id="@+id/page_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
         android:textSize="100sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,11 +21,11 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/numeral"
+        android:layout_below="@id/page_num"
         android:layout_centerHorizontal="true"
-        android:text="text"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numeral" />
+        app:layout_constraintTop_toBottomOf="@+id/page_num" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

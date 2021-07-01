@@ -9,7 +9,7 @@ import com.andariadar.viewpager2.model.Page
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    lateinit var contactList: List<Page>
+    lateinit var pageList: MutableList<Page>
     private lateinit var adapter: ViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,15 +18,15 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        initContactList()
+        initPageList()
         initAdapter()
 
         binding.apply {
-            btnOk.setOnClickListener {
-                // creating new list from previous one
-                val list: MutableList<Page> = contactList.toMutableList()
-                list.add(Page(5, "6", "text 6", R.color.white))
-                adapter.submitList(list)
+            btnAdd.setOnClickListener {
+                // create new list from previous one
+                val newList: MutableList<Page> = pageList.toMutableList()
+                newList.add(Page(4, "Page 5", "text 5", R.color.blue))
+                adapter.submitList(newList)
             }
         }
     }
@@ -36,20 +36,19 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             viewPager.adapter = adapter
             viewPager.setPageTransformer(CubeOutScalingTransformer())
-
         }
 
         // pass list to adapter for the first time
-        adapter.differ.submitList(contactList)
+        adapter.submitList(pageList)
     }
 
-    private fun initContactList() {
-        contactList = listOf(
-            Page(0,"1", "text 1", R.color.yellow),
-            Page(1,"2", "text 2", R.color.red),
-            Page(2,"3", "text 3", R.color.green),
-            Page(3,"4", "text 4", R.color.purple),
-            Page(4,"5", "text 5", R.color.blue)
+    private fun initPageList() {
+        pageList = mutableListOf(
+            Page(0,"Page 1", "text 1", R.color.yellow),
+            Page(1,"Page 2", "text 2", R.color.red),
+            Page(2,"Page 3", "text 3", R.color.green),
+            Page(3,"Page 4", "text 4", R.color.purple)
         )
     }
 }
+
